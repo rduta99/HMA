@@ -39,7 +39,7 @@
                 </form>
             </div>
 
-            <div class="card card-body">
+            {{-- <div class="card card-body">
                 <h1>Menu Order Settings</h1>
                 <form action="{{ route('setting.menu.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -53,7 +53,7 @@
                     </div>
                     <button type="submit" class="btn btn-success">Save</button>
                 </form>
-            </div>
+            </div> --}}
         </div><!-- /.container-fluid -->
     </section>
 @endsection

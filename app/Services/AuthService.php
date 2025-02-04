@@ -3,12 +3,14 @@
 namespace App\Services;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use App\Services\BaseService;
 use App\Traits\ApiResponseTrait;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthService extends BaseService
 {
@@ -18,7 +20,7 @@ class AuthService extends BaseService
         parent::__construct();
     }
 
-    function loginAttempt(LoginRequest $request): View {
+    function loginAttempt(LoginRequest $request) {
         try {
             if(!Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
                 throw new Exception('Invalid credentials. Please check your username or password.', 404);

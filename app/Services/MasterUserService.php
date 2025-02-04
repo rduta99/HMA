@@ -27,7 +27,7 @@ class MasterUserService extends BaseService
             if($this->userRepo->create([
                 'user_email' => $request->user_email,
                 'user_fullname' => $request->user_fullname,
-                'password' => Hash::make($request->user_password),
+                'password' => Hash::make($request->password),
             ]))
                 return true;
 
