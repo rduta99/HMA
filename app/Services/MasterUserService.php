@@ -37,6 +37,17 @@ class MasterUserService extends BaseService
         }
     }
 
+    function updateUser($id, Request $request) {
+        try {
+            $user = $this->userRepo->find($id);
+            $user->user_fullname = $request->user_fullname;
+            $user->user_email = $request->user_email;
+            return $user->save();
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
     function deleteUser($id) {
         return $this->userRepo->delete(['user_id' => $id]);
     }

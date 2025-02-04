@@ -37,15 +37,18 @@ class MasterUserController extends Controller
         return view('user.detail', $data);
     }
 
-    function updateUser(Request $request) {
+    function updateUser($id, Request $request) {
+        if($this->service->updateUser($id, $request))
+            return redirect()->route('master.user')->with('success', "User Updated");
 
+        return back()->with('fail', 'Fail to update data');
     }
 
     function deleteUser($id) {
         if($this->service->deleteUser($id))
-            return redirect()->route('master.user')->with('msg', "User Deleted");
+            return redirect()->route('master.user')->with('success', "User Deleted");
 
-        return back()->with('msg', 'Fail to delete data');
+        return back()->with('fail', 'Fail to delete data');
     }
 
     function userList(Request $request): JsonResponse {
