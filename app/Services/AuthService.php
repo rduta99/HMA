@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Services\BaseService;
 use App\Traits\ApiResponseTrait;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class AuthService extends BaseService
         parent::__construct();
     }
 
-    function loginAttempt(LoginRequest $request): JsonResponse {
+    function loginAttempt(LoginRequest $request): View {
         try {
             if(!Auth::attempt(['user_email' => $request->email, 'password' => $request->password])) {
                 throw new Exception('Invalid credentials. Please check your username or password.', 404);
@@ -29,9 +30,9 @@ class AuthService extends BaseService
             $user->user_status = 1;
             $user->save();
 
-            return $this->successResponse(message: 'Login Success');
+            return redirect()->route('dashboard');
         } catch (\Throwable $th) {
-            return $this->failedResponse(message: $th->getMessage(), code: $th->getCode());
+            return back();
         }
     }
 }
