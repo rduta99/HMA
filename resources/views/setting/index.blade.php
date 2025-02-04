@@ -18,6 +18,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card card-body">
+                <h1>Settings</h1>
                 <form action="{{ route('setting.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -32,6 +33,22 @@
                         <div class="custom-file mb-3">
                             <input type="file" class="custom-file-input" name="background" id="customFile2">
                             <label class="custom-file-label" for="customFile2">Choose file for background</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+
+            <div class="card card-body">
+                <h1>Menu Order Settings</h1>
+                <form action="{{ route('setting.menu.update') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for=""></label>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success">Save</button>

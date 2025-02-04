@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Menu;
 use App\Repositories\SettingRepo;
 use App\Services\BaseService;
 use Illuminate\Http\Request;
@@ -43,5 +44,12 @@ class SettingService extends BaseService
         } catch (\Throwable $th) {
             return false;
         }
+    }
+
+    function getMenuSetting() {
+        return [
+            'menus' => Menu::all(),
+            'count' => Menu::count()
+        ];
     }
 }

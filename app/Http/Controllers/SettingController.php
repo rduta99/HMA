@@ -16,6 +16,7 @@ class SettingController extends Controller
 
     function index() {
         $this->data['settings'] = $this->service->getAllSettings();
+        $this->data['menu_setting'] = $this->service->getMenuSetting();
 
         return view('setting.index', $this->data);
     }
