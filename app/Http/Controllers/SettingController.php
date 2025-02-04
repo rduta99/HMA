@@ -10,6 +10,7 @@ class SettingController extends Controller
     protected $service;
 
     public function __construct(SettingService $service) {
+        parent::__construct();
         $this->service = $service;
     }
 
