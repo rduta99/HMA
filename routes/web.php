@@ -16,4 +16,9 @@ Route::middleware('web')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/user', [MasterUserController::class, 'index'])->name('master.user');
+    Route::get('/create-user', [MasterUserController::class, 'create'])->name('master.user.create.view');
+    Route::post('/user', [MasterUserController::class, 'createProcess'])->name('master.user.create');
+    Route::get('/user/{id}', [MasterUserController::class, 'detail'])->name('master.user.detail');
+    Route::post('/user/{id}', [MasterUserController::class, 'updateUser'])->name('master.user.update');
+    Route::get('/user/{id}/delete', [MasterUserController::class, 'deleteUser'])->name('master.user.delete');
 });

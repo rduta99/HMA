@@ -109,7 +109,7 @@ class BaseRepository
      *
      * @param  array  $find [explicite description]
      */
-    public function delete(array $find): object
+    public function delete(array $find)
     {
         return $this->wheremapper($find, $this->model)->delete();
     }
