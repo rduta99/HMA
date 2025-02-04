@@ -19,7 +19,7 @@ class AuthController extends Controller
         return view('auth.index');
     }
 
-    function loginAttempt(LoginRequest $request): JsonResponse {
+    function loginAttempt(LoginRequest $request) {
         return $this->service->loginAttempt($request);
     }
 }

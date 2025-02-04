@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [AuthController::class, 'loginAttempt'])->name('api.auth.login');
+Route::middleware('auth:sanctum')->group(function() {
+    Route::get('user-count', [DashboardController::class, 'dashboardUserCount'])->name('api.user.count');
+});

@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Repositories\BaseRepository;
-use {{namespacedModel}};
+use App\Models\User;
 
 class UserRepo extends BaseRepository
 {
-    public function __construct({{m}} $model) {
+    public function __construct(User $model) {
         $this->model = $model;
     }
 }
