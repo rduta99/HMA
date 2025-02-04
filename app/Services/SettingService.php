@@ -22,7 +22,7 @@ class SettingService extends BaseService
     function updateSetting(Request $request) {
         try {
             // Logo
-            $logoPath = $request->file('logo')->store('logo');
+            $logoPath = $request->file('logo')->store('public');
             $logoData = $this->settingRepo->findWhere([
                 'name' => 'logo'
             ]);
@@ -31,12 +31,12 @@ class SettingService extends BaseService
             $logoData->save();
 
             // Background
-            $backgroundPath = $request->file('background')->store('background');
+            $backgroundPath = $request->file('background')->store('public');
             $backgroundData = $this->settingRepo->findWhere([
                 'name' => 'background'
             ]);
 
-            $backgroundData->value = 'url(\'' . $backgroundPath . '\')';
+            $backgroundData->value = $backgroundPath;
             $backgroundData->save();
 
             return true;

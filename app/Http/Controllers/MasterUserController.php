@@ -12,15 +12,16 @@ class MasterUserController extends Controller
     protected $service;
 
     public function __construct(MasterUserService $service) {
+        parent::__construct();
         $this->service = $service;
     }
 
     function index() {
-        return view('user.index');
+        return view('user.index', $this->data);
     }
 
     function create() {
-        return view('user.create');
+        return view('user.create', $this->data);
     }
 
     function createProcess(StoreUserRequest $request) {
@@ -31,10 +32,10 @@ class MasterUserController extends Controller
     }
 
     function detail($id) {
-        $data['user'] = $this->service->userDetail($id);
-        $data['user_id'] = $id;
+        $this->data['user'] = $this->service->userDetail($id);
+        $this->data['user_id'] = $id;
 
-        return view('user.detail', $data);
+        return view('user.detail', $this->data);
     }
 
     function updateUser($id, Request $request) {

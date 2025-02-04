@@ -22,6 +22,14 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <style>
+        .content-wrapper {
+            background: url('{!! $background !!}') !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            background-position: center;
+        }
+    </style>
     @stack('css')
 </head>
 
